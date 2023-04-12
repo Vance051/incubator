@@ -2,9 +2,9 @@ import React, {FC} from 'react';
 
 type OnOffType = {
     on: boolean
-    setOn:(on:boolean)=>void
+    onChange: (on: boolean) => void
 }
-export const OnOff:FC<OnOffType> = (props) => {
+export const OnOff: FC<OnOffType> = (props) => {
     console.log('on' + props.on)
 
     const onStyle = {
@@ -13,7 +13,7 @@ export const OnOff:FC<OnOffType> = (props) => {
         border: '1px solid black',
         display: 'inline-block',
         padding: '2px',
-        backgroundColor: props.on ? 'green' :'white'
+        backgroundColor: props.on ? 'green' : 'white'
     }
     const offStyle = {
         width: '30px',
@@ -21,7 +21,7 @@ export const OnOff:FC<OnOffType> = (props) => {
         border: '1px solid black',
         display: 'inline-block',
         padding: '2px',
-        backgroundColor: props.on ? 'white' :'red'
+        backgroundColor: props.on ? 'white' : 'red'
     }
     const indicatorStyle = {
         width: '10px',
@@ -30,15 +30,22 @@ export const OnOff:FC<OnOffType> = (props) => {
         border: '1px solid black',
         display: 'inline-block',
         padding: '2px',
-        backgroundColor: props.on ? 'green' :'white'
+        backgroundColor: props.on ? 'green' : 'red'
     }
+const onClicked = (on:boolean) =>{
+    props.onChange(on)
+}
 
     return (
 
         <div>
-<div style={onStyle} onClick={()=>{props.setOn(true)}}></div>
-<div style={offStyle} onClick={()=>{props.setOn(false)}}></div>
-<div style={indicatorStyle}></div>
+            <div style={onStyle} onClick={() => {
+                onClicked(true)
+            }}></div>
+            <div style={offStyle} onClick={() => {
+                onClicked(false)
+            }}></div>
+            <div style={indicatorStyle}></div>
         </div>
     );
 };

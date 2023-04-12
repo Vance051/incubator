@@ -13,14 +13,14 @@ function App() {
     let [on, setOn] = useState(false)
     return (
         <div className="App">
-            <OnOff on={on} setOn={setOn}/>
+            <OnOff on={on} onChange={setOn}/> {on.toString()}
             <PageTitle title={"This is App component"}/>
             <PageTitle title={"My friends"}/>
             Article1
             {/*<Accordion titleValue={'Bayan'} collapsed={true}/>*/}
             {/*<Accordion titleValue={"bang-bamg"} collapsed={false}/>*/}
             <UncontrolledAccordion titleValue={'No-controll'} collapsed={false}/>
-            <UncontrolledRating value={1}/>
+            <UncontrolledRating/>
             <Rating value={ratingValue} onClick={setRatingValue}/>
             <Accordion titleValue={'Menu'} collapsed={collapsed} setCollapsed={setCollapsed}/>
         </div>
