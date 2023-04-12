@@ -33,7 +33,7 @@ function Star(props: StarPropsType) {
 
     // return props.selected ? <span><b>star </b></span> : <span>star </span>
     return <span onClick={()=>{
-        debugger
+
         props.onClick(props.value)}}>
         {props.selected ? <b>star </b> : "star "}
     </span>
