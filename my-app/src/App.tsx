@@ -3,10 +3,12 @@ import './App.css';
 import {UncontrolledRating} from "./Components/UncontrolledRating/UncontrolledRating";
 import {UncontrolledAccordion} from "./Components/UncontrolledAccordion/UncontrolledAccordion";
 import {Rating, RatingValueType} from "./Components/Rating/Rating";
+import {Accordion} from "./Components/Accordion/Accordion";
 
 function App() {
     console.log('App render')
     let [ratingValue, setRatingValue] = useState<RatingValueType>(1)
+    let [collapsed, setCollapsed] = useState(false)
     return (
         <div className="App">
             <PageTitle title={"This is App component"}/>
@@ -17,7 +19,7 @@ function App() {
             <UncontrolledAccordion titleValue={'No-controll'} collapsed={false}/>
             <UncontrolledRating value={1}/>
             <Rating value={ratingValue} onClick={setRatingValue}/>
-
+            <Accordion titleValue={'Menu'} collapsed={collapsed} setCollapsed={setCollapsed}/>
         </div>
     );
 }
