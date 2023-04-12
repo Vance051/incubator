@@ -1,19 +1,22 @@
-import React, {useState} from "react";
+import React from "react";
 
-type RatingPropsType = {
-    value: 0 | 1 | 2 | 3 | 4 | 5
+export type RatingValueType = 0 | 1 | 2 | 3 | 4 | 5
+
+
+export type RatingPropsType = {
+    value: RatingValueType
+    onClick:(value:RatingValueType)=>void
 }
 
 export function Rating(props: RatingPropsType) {
-    let [value, setValue] = useState(4)
-    console.log('Rating rendered')
+    console.log('UncontrolledRating rendered')
     return (
         <div>
-            <Star selected={value > 0} setValue={setValue} value={1}/>
-            <Star selected={value > 1} setValue={setValue} value={2}/>
-            <Star selected={value > 2} setValue={setValue} value={3}/>
-            <Star selected={value > 3} setValue={setValue} value={4}/>
-            <Star selected={value > 4} setValue={setValue} value={5}/>
+            <Star selected={props.value > 0} onClick={props.onClick} value={1}/>
+            <Star selected={props.value > 1} onClick={props.onClick} value={2}/>
+            <Star selected={props.value > 2} onClick={props.onClick} value={3}/>
+            <Star selected={props.value > 3} onClick={props.onClick} value={4}/>
+            <Star selected={props.value > 4} onClick={props.onClick} value={5}/>
         </div>
     )
 }
@@ -21,16 +24,17 @@ export function Rating(props: RatingPropsType) {
 
 type StarPropsType = {
     selected: boolean
-    value: 1 | 2 | 3 | 4 | 5
-    setValue: (value: 1 | 2 | 3 | 4 | 5) => void
+    onClick:(value:RatingValueType)=>void
+    value:RatingValueType
+
 }
 
 function Star(props: StarPropsType) {
 
     // return props.selected ? <span><b>star </b></span> : <span>star </span>
-    return <span onClick={() => {
-        props.setValue(props.value)
-    }}>
+    return <span onClick={()=>{
+        debugger
+        props.onClick(props.value)}}>
         {props.selected ? <b>star </b> : "star "}
     </span>
 
